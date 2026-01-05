@@ -209,6 +209,7 @@ export const ContactPage = () => {
 
       <NewFooter />
       <GoToTop />
+      <Toaster />
     </div>
   );
 };
