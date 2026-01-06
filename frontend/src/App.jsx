@@ -68,7 +68,6 @@ const Home = () => {
       <WhatWeDoTabbedSection />
       <DecisionPhilosophySection />
       <MergedCredibilitySection />
-      <CaseStudyHighlight />
       <CTASection />
       <NewFooter />
       <GoToTop />
