@@ -4,46 +4,45 @@ import { Link } from 'react-router-dom';
 export const NewFooter = () => {
   const footerSections = [
     {
-      title: 'Company',
+      title: 'About',
       links: [
-        { name: 'About', path: '/about/overview' },
-        { name: 'News', path: '/news' },
-        { name: 'Join Us', path: '/join' },
-        { name: 'Contact', path: '/contact' },
-      ]
-    },
-    {
-      title: 'Partners & Growth',
-      links: [
-        { name: 'Portfolio Companies', path: '/about/partners' },
-        { name: 'Strategic Partnerships', path: '/about/partners' },
-        { name: 'Governance & ESG', path: '/about/partners' },
-        { name: 'Investor Relations', path: '/about/investors' },
+        { name: 'Overview', path: '/about/overview' },
+        { name: 'The ScaleIQ Model', path: '/about/model' },
+        { name: 'Leadership', path: '/about/leadership' },
+        { name: 'Investors', path: '/about/investors' },
+        { name: 'Partners & Growth', path: '/about/partners' },
       ]
     },
     {
       title: 'How We Work',
       links: [
-        { name: 'The ScaleIQ Model', path: '/about/model' },
-        { name: 'Delivery Organizations', path: '/about/model' },
+        { name: 'Our Approach', path: '/how-we-work' },
       ]
     },
     {
-      title: 'Products',
+      title: 'What We Do',
       links: [
-        { name: 'OgesOne', path: '/products/ogesone' },
-        { name: 'Product 2', path: '/products/product2' },
-        { name: 'Product 3', path: '/products/product3' },
+        { name: 'Digital Engineering', path: '/digital/app-dev' },
+        { name: 'Products', path: '/products/ogesone' },
+        { name: 'GCC Solutions', path: '/gcc-solutions' },
       ]
     },
     {
-      title: 'Digital Engineering',
+      title: 'Who We Serve',
       links: [
-        { name: 'Application Development & Management', path: '/digital/app-dev' },
-        { name: 'Product Engineering', path: '/digital/product' },
-        { name: 'Professional Services', path: '/digital/professional' },
-        { name: 'Technical Consulting', path: '/digital/consulting' },
-        { name: 'Staff Augmentation', path: '/digital/staff' },
+        { name: 'Oil & Gas Companies', path: '/serve/oil-gas' },
+        { name: 'Energy Companies', path: '/serve/energy' },
+        { name: 'Renewables & Utilities', path: '/serve/renewables' },
+        { name: 'Energy ISVs', path: '/serve/isvs' },
+        { name: 'Oilfield Service Companies', path: '/serve/oil-service' },
+      ]
+    },
+    {
+      title: 'Resources',
+      links: [
+        { name: 'News', path: '/news' },
+        { name: 'Join Us', path: '/join' },
+        { name: 'Contact', path: '/contact' },
       ]
     },
   ];

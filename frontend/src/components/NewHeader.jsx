@@ -20,6 +20,15 @@ export const NewHeader = () => {
         { name: "Partners & Growth", path: "/about/partners" },
       ],
     },
+    { name: "How We Work", path: "/how-we-work" },
+    {
+      name: "What We Do",
+      items: [
+        { name: "Digital Engineering", path: "/digital/app-dev" },
+        { name: "Products", path: "/products/ogesone" },
+        { name: "GCC Solutions", path: "/gcc-solutions" },
+      ],
+    },
     {
       name: "Whom We Serve",
       items: [
