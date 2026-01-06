@@ -35,7 +35,7 @@ export const AboutOverview = () => {
         .section-animate {
           opacity: 0;
           transform: translateY(30px);
-          transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+          transition: opacity 0.8s ease-out, transform 0.8s ease-out;
         }
         
         .section-visible {
@@ -43,49 +43,50 @@ export const AboutOverview = () => {
           transform: translateY(0);
         }
         
-        .card-interactive {
-          transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        .card-premium {
+          transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         }
         
-        .card-interactive:hover {
-          transform: translateY(-8px);
-          box-shadow: 0 20px 40px rgba(200, 169, 81, 0.3);
+        .card-premium:hover {
+          transform: translateY(-12px);
+          box-shadow: 0 25px 50px rgba(220, 191, 98, 0.3);
         }
         
-        .gold-border-hover {
+        .gold-underline {
           position: relative;
         }
         
-        .gold-border-hover::after {
+        .gold-underline::after {
           content: '';
           position: absolute;
-          bottom: 0;
+          bottom: -8px;
           left: 0;
           width: 0;
           height: 3px;
-          background: linear-gradient(90deg, #C8A951, #FFD700);
-          transition: width 0.4s ease-out;
+          background: linear-gradient(90deg, #DCBF62, #B89A3C);
+          transition: width 0.5s ease-out;
         }
         
-        .gold-border-hover:hover::after {
+        .gold-underline:hover::after {
           width: 100%;
         }
         
-        .image-zoom {
+        .image-parallax {
           overflow: hidden;
         }
         
-        .image-zoom img {
-          transition: transform 0.5s ease-out;
+        .image-parallax > * {
+          transition: transform 0.6s ease-out;
         }
         
-        .image-zoom:hover img {
-          transform: scale(1.05);
+        .image-parallax:hover > * {
+          transform: scale(1.08);
         }
         
-        .stagger-1 { animation-delay: 0.1s; }
-        .stagger-2 { animation-delay: 0.2s; }
-        .stagger-3 { animation-delay: 0.3s; }
+        .stagger-1 { transition-delay: 0.1s; }
+        .stagger-2 { transition-delay: 0.2s; }
+        .stagger-3 { transition-delay: 0.3s; }
+        .stagger-4 { transition-delay: 0.4s; }
       `}</style>
       
       <div className="pt-32 pb-20">
@@ -94,15 +95,17 @@ export const AboutOverview = () => {
           <div className="text-sm text-scaleiq-gold">About &gt; Overview</div>
         </div>
 
-        {/* Hero Section */}
+        {/* Hero Section - BLACK with GOLD */}
         <section 
           ref={(el) => (sectionsRef.current[0] = el)}
           className="section-animate max-w-6xl mx-auto px-6 lg:px-8 mb-20"
         >
-          <div className="card-interactive bg-gradient-to-br from-scaleiq-black via-gray-900 to-scaleiq-black border border-scaleiq-gold/20 rounded-2xl p-12 shadow-xl">
-            <h1 className="text-5xl lg:text-6xl font-bold text-scaleiq-white mb-8 gold-border-hover inline-block">
-              Transformation Oriented, <span className="text-scaleiq-gold">Grounded in Expertise</span>
+          <div className="card-premium bg-scaleiq-black border-2 border-scaleiq-gold/20 rounded-2xl p-12 shadow-2xl">
+            <h1 className="text-5xl lg:text-6xl font-bold text-scaleiq-white mb-8">
+              Transformation Oriented, <span className="text-scaleiq-gold gold-underline inline-block">Grounded in Expertise</span>
             </h1>
+            
+            <div className="h-1 w-24 bg-gradient-to-r from-scaleiq-gold to-scaleiq-gold-dark mb-8"></div>
             
             <div className="space-y-6 text-lg text-gray-300 leading-relaxed">
               <p>
@@ -113,43 +116,45 @@ export const AboutOverview = () => {
                 Our approach is informed by deep domain knowledge across upstream, midstream, and downstream environments, enabling solutions that account for operational continuity, regulatory compliance, asset lifecycles, and scale.
               </p>
               
-              <p className="text-scaleiq-gold font-medium">
+              <p className="text-scaleiq-gold font-medium text-xl">
                 The result is digital engineering that delivers resilient, system-level outcomes that perform in real-world oil and gas conditions.
               </p>
             </div>
           </div>
         </section>
 
-        {/* Mission & Vision - Interactive Cards */}
+        {/* Mission & Vision - Premium Cards */}
         <section 
           ref={(el) => (sectionsRef.current[1] = el)}
           className="section-animate max-w-6xl mx-auto px-6 lg:px-8 mb-20"
         >
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <div className="card-interactive bg-gradient-to-br from-gray-900 to-scaleiq-black border-l-4 border-scaleiq-gold rounded-xl p-10 shadow-xl stagger-1">
+            <div className="card-premium stagger-1 bg-gradient-to-br from-scaleiq-black via-gray-900 to-scaleiq-black border-2 border-scaleiq-gold/30 rounded-xl p-10 shadow-xl">
               <div className="flex items-center gap-3 mb-6">
-                <div className="w-12 h-12 bg-scaleiq-gold/10 rounded-full flex items-center justify-center">
-                  <svg className="w-6 h-6 text-scaleiq-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <div className="w-14 h-14 bg-scaleiq-gold/10 border-2 border-scaleiq-gold rounded-full flex items-center justify-center">
+                  <svg className="w-7 h-7 text-scaleiq-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
                   </svg>
                 </div>
                 <h2 className="text-3xl font-bold text-scaleiq-gold">Our Vision</h2>
               </div>
+              <div className="h-px bg-gradient-to-r from-scaleiq-gold to-transparent mb-6"></div>
               <p className="text-gray-300 leading-relaxed text-lg">
                 To become the trusted digital engineering partner to the world's leading energy companies in their transformation journey.
               </p>
             </div>
             
-            <div className="card-interactive bg-gradient-to-br from-gray-900 to-scaleiq-black border-l-4 border-scaleiq-gold rounded-xl p-10 shadow-xl stagger-2">
+            <div className="card-premium stagger-2 bg-gradient-to-br from-scaleiq-black via-gray-900 to-scaleiq-black border-2 border-scaleiq-gold/30 rounded-xl p-10 shadow-xl">
               <div className="flex items-center gap-3 mb-6">
-                <div className="w-12 h-12 bg-scaleiq-gold/10 rounded-full flex items-center justify-center">
-                  <svg className="w-6 h-6 text-scaleiq-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <div className="w-14 h-14 bg-scaleiq-gold/10 border-2 border-scaleiq-gold rounded-full flex items-center justify-center">
+                  <svg className="w-7 h-7 text-scaleiq-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
                   </svg>
                 </div>
                 <h2 className="text-3xl font-bold text-scaleiq-gold">Our Mission</h2>
               </div>
+              <div className="h-px bg-gradient-to-r from-scaleiq-gold to-transparent mb-6"></div>
               <p className="text-gray-300 leading-relaxed text-lg">
                 To solve the real barriers to technology adoption and transformation in the energy sector – through an end-to-end approach to solving complex workflow challenges.
               </p>
@@ -162,36 +167,37 @@ export const AboutOverview = () => {
           ref={(el) => (sectionsRef.current[2] = el)}
           className="section-animate max-w-6xl mx-auto px-6 lg:px-8 mb-20"
         >
-          <div className="card-interactive image-zoom bg-gradient-to-br from-scaleiq-black to-gray-900 rounded-2xl overflow-hidden border-4 border-scaleiq-gold/30 shadow-2xl">
+          <div className="card-premium image-parallax bg-scaleiq-black rounded-2xl overflow-hidden border-4 border-scaleiq-gold/40 shadow-2xl">
             <div className="aspect-video flex items-center justify-center relative group">
               <div className="absolute inset-0 bg-gradient-to-br from-scaleiq-black via-gray-900 to-scaleiq-black"></div>
-              <div className="absolute inset-0 bg-scaleiq-gold/0 group-hover:bg-scaleiq-gold/10 transition-all duration-500"></div>
+              <div className="absolute inset-0 bg-scaleiq-gold/0 group-hover:bg-scaleiq-gold/10 transition-all duration-700"></div>
               
               <div className="relative z-10 text-center">
-                <div className="w-20 h-20 bg-scaleiq-gold/20 border-4 border-scaleiq-gold rounded-full flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
-                  <svg className="w-10 h-10 text-scaleiq-gold" fill="currentColor" viewBox="0 0 24 24">
+                <div className="w-24 h-24 bg-scaleiq-gold/20 border-4 border-scaleiq-gold rounded-full flex items-center justify-center mx-auto mb-6 group-hover:scale-110 group-hover:bg-scaleiq-gold/30 transition-all duration-500">
+                  <svg className="w-12 h-12 text-scaleiq-gold" fill="currentColor" viewBox="0 0 24 24">
                     <path d="M8 5v14l11-7z"/>
                   </svg>
                 </div>
                 <div className="text-scaleiq-gold text-lg font-medium mb-4">
                   Digital Supply Networks Transforming Operations for Oil and Gas
                 </div>
-                <div className="text-scaleiq-white text-5xl font-bold">1:59</div>
+                <div className="text-scaleiq-white text-6xl font-bold">1:59</div>
               </div>
             </div>
           </div>
         </section>
 
-        {/* Solutions Section - Premium Card */}
+        {/* Solutions Section - BLACK Premium Card */}
         <section 
           ref={(el) => (sectionsRef.current[3] = el)}
           className="section-animate max-w-6xl mx-auto px-6 lg:px-8 mb-20"
         >
-          <div className="card-interactive bg-gradient-to-br from-gray-900 to-scaleiq-black border border-scaleiq-gold/20 rounded-2xl p-12 shadow-xl">
+          <div className="card-premium bg-gradient-to-br from-scaleiq-black to-gray-900 border-2 border-scaleiq-gold/20 rounded-2xl p-12 shadow-2xl">
             <div className="border-l-4 border-scaleiq-gold pl-8 mb-8">
-              <h2 className="text-4xl font-bold text-scaleiq-white mb-2 gold-border-hover inline-block">
+              <h2 className="text-4xl font-bold text-scaleiq-white mb-4">
                 Solutions Designed Precisely for the <span className="text-scaleiq-gold">Oil & Gas Industry</span>
               </h2>
+              <div className="h-1 w-32 bg-gradient-to-r from-scaleiq-gold to-scaleiq-gold-dark"></div>
             </div>
             
             <div className="space-y-6 text-lg text-gray-300 leading-relaxed">
@@ -200,7 +206,7 @@ export const AboutOverview = () => {
               </p>
               
               <div className="p-6 bg-scaleiq-gold/5 border-l-4 border-scaleiq-gold rounded-lg">
-                <p className="font-medium text-scaleiq-gold">
+                <p className="font-semibold text-scaleiq-gold text-xl">
                   ScaleIQ solves the industry's biggest bottleneck by bridging fragmented tools, fragmented data and highly complex use cases.
                 </p>
               </div>
@@ -210,7 +216,7 @@ export const AboutOverview = () => {
               </p>
               
               <div className="p-6 bg-scaleiq-gold/5 border-l-4 border-scaleiq-gold rounded-lg">
-                <p className="font-medium text-scaleiq-gold">
+                <p className="font-semibold text-scaleiq-gold text-xl">
                   Our strength lies in treating digital and AI as integral components of the operational ecosystem of oil and gas companies.
                 </p>
               </div>
@@ -218,36 +224,35 @@ export const AboutOverview = () => {
           </div>
         </section>
 
-        {/* Core Workflows - White Section for Contrast */}
+        {/* Core Workflows - Premium BLACK Card */}
         <section 
           ref={(el) => (sectionsRef.current[4] = el)}
-          className="section-animate bg-scaleiq-white py-20 mb-20"
+          className="section-animate max-w-6xl mx-auto px-6 lg:px-8 mb-20"
         >
-          <div className="max-w-6xl mx-auto px-6 lg:px-8">
-            <div className="card-interactive bg-white border border-gray-200 rounded-2xl p-12 shadow-xl">
-              <div className="space-y-6 text-lg text-gray-700 leading-relaxed">
-                <p>
-                  Core workflows such as subsurface interpretation, drilling and production optimization, pipeline integrity management and refinery operations strongly depend on domain judgment, safety constraints, regulatory compliance and complex datasets. Digital and AI solutions need to account for operational context, edge cases, and the human-in-the-loop processes that govern real outcomes.
-                </p>
-                
-                <p>
-                  By treating digital and AI as integral components of interconnected operating systems – across upstream, midstream, distribution and retail – ScaleIQ helps organizations move beyond fragmented initiatives toward intelligent operations that are resilient, trusted and capable of delivering sustained value at scale.
-                </p>
-              </div>
+          <div className="card-premium bg-gradient-to-br from-gray-900 to-scaleiq-black border-2 border-scaleiq-gold/20 rounded-2xl p-12 shadow-2xl">
+            <div className="space-y-6 text-lg text-gray-300 leading-relaxed">
+              <p>
+                Core workflows such as subsurface interpretation, drilling and production optimization, pipeline integrity management and refinery operations strongly depend on domain judgment, safety constraints, regulatory compliance and complex datasets. Digital and AI solutions need to account for operational context, edge cases, and the human-in-the-loop processes that govern real outcomes.
+              </p>
+              
+              <p>
+                By treating digital and AI as integral components of interconnected operating systems – across upstream, midstream, distribution and retail – ScaleIQ helps organizations move beyond fragmented initiatives toward intelligent operations that are resilient, trusted and capable of delivering sustained value at scale.
+              </p>
             </div>
           </div>
         </section>
 
-        {/* Data Integration Section */}
+        {/* Data Integration Section - BLACK Card */}
         <section 
           ref={(el) => (sectionsRef.current[5] = el)}
           className="section-animate max-w-6xl mx-auto px-6 lg:px-8 mb-20"
         >
-          <div className="card-interactive bg-gradient-to-br from-gray-900 to-scaleiq-black border border-scaleiq-gold/20 rounded-2xl p-12 shadow-xl">
+          <div className="card-premium bg-gradient-to-br from-scaleiq-black to-gray-900 border-2 border-scaleiq-gold/20 rounded-2xl p-12 shadow-2xl">
             <div className="border-l-4 border-scaleiq-gold pl-8 mb-8">
-              <h2 className="text-3xl font-bold text-scaleiq-white mb-2 gold-border-hover inline-block">
+              <h2 className="text-3xl font-bold text-scaleiq-white mb-4">
                 Our data integration capabilities and platform offerings address the <span className="text-scaleiq-gold">fragmented and self-managed data landscapes</span> common in oil and gas.
               </h2>
+              <div className="h-1 w-32 bg-gradient-to-r from-scaleiq-gold to-scaleiq-gold-dark"></div>
             </div>
             
             <div className="space-y-6 text-lg text-gray-300 leading-relaxed">
@@ -262,17 +267,17 @@ export const AboutOverview = () => {
           </div>
         </section>
 
-        {/* Testimonial Section - Premium */}
+        {/* Testimonial Section - Premium BLACK */}
         <section 
           ref={(el) => (sectionsRef.current[6] = el)}
           className="section-animate max-w-5xl mx-auto px-6 lg:px-8 mb-20"
         >
-          <div className="card-interactive bg-gradient-to-br from-gray-900 via-scaleiq-black to-gray-900 border-2 border-scaleiq-gold/30 rounded-2xl p-12 text-center shadow-2xl relative overflow-hidden">
+          <div className="card-premium bg-gradient-to-br from-gray-900 via-scaleiq-black to-gray-900 border-2 border-scaleiq-gold/40 rounded-2xl p-12 text-center shadow-2xl relative overflow-hidden">
             <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-scaleiq-gold to-transparent"></div>
             <div className="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-scaleiq-gold to-transparent"></div>
             
             <div className="mb-8">
-              <svg className="w-16 h-16 text-scaleiq-gold mx-auto opacity-50" fill="currentColor" viewBox="0 0 24 24">
+              <svg className="w-16 h-16 text-scaleiq-gold mx-auto opacity-60" fill="currentColor" viewBox="0 0 24 24">
                 <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/>
               </svg>
             </div>
@@ -281,7 +286,7 @@ export const AboutOverview = () => {
               ScaleIQ brought a level of domain understanding we don't usually see in digital partners. They didn't start with tools or platforms - they started with how our operations actually work and designed from there.
             </p>
             
-            <div className="inline-block px-6 py-2 bg-scaleiq-gold/10 border border-scaleiq-gold/30 rounded-full">
+            <div className="inline-block px-6 py-2 bg-scaleiq-gold/10 border-2 border-scaleiq-gold/40 rounded-full">
               <div className="text-scaleiq-gold font-medium">
                 VP, Digital Transformation, Integrated Energy Company
               </div>
@@ -294,7 +299,7 @@ export const AboutOverview = () => {
           ref={(el) => (sectionsRef.current[7] = el)}
           className="section-animate max-w-4xl mx-auto px-6 lg:px-8"
         >
-          <div className="card-interactive bg-gradient-to-br from-gray-900 to-scaleiq-black border-2 border-scaleiq-gold/30 rounded-2xl p-12 text-center shadow-2xl">
+          <div className="card-premium bg-gradient-to-br from-gray-900 to-scaleiq-black border-2 border-scaleiq-gold/40 rounded-2xl p-12 text-center shadow-2xl">
             <h2 className="text-4xl font-bold text-scaleiq-white mb-6">
               Rethink Your <span className="text-scaleiq-gold">Digital Roadmap</span>
             </h2>
@@ -307,10 +312,9 @@ export const AboutOverview = () => {
             
             <button 
               onClick={() => navigate('/contact')}
-              className="group relative px-10 py-5 bg-transparent border-2 border-scaleiq-gold text-scaleiq-gold hover:bg-scaleiq-gold hover:text-scaleiq-black font-medium rounded-lg transition-all overflow-hidden"
+              className="group relative px-12 py-5 bg-transparent border-2 border-scaleiq-gold text-scaleiq-gold hover:bg-scaleiq-gold hover:text-scaleiq-black font-medium rounded-lg transition-all duration-300 overflow-hidden shadow-lg hover:shadow-scaleiq-gold/50"
             >
               <span className="relative z-10">Start a Conversation</span>
-              <div className="absolute inset-0 bg-scaleiq-gold transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left"></div>
             </button>
           </div>
         </section>
