@@ -32,47 +32,15 @@ export const EnergyTechSection = () => {
   };
 
   return (
-    <section 
-      className="py-24 border-t-4 relative" 
-      data-testid="energy-tech-section"
-      style={{
-        background: 'linear-gradient(180deg, #0a1929 0%, #000000 100%)',
-        borderTopColor: '#FFD700'
-      }}
-    >
-      {/* Atmospheric particles */}
-      <div className="absolute inset-0 opacity-20 pointer-events-none">
-        {[...Array(30)].map((_, i) => (
-          <div
-            key={i}
-            className="absolute w-1 h-1 bg-scaleiq-gold rounded-full animate-pulse"
-            style={{
-              left: `${Math.random() * 100}%`,
-              top: `${Math.random() * 100}%`,
-              animationDelay: `${Math.random() * 3}s`,
-              animationDuration: `${3 + Math.random() * 2}s`
-            }}
-          />
-        ))}
-      </div>
-      
-      <div className="max-w-6xl mx-auto px-6 lg:px-8 relative z-10">
+    <section className="py-24 bg-gray-50 border-t-4 border-scaleiq-gold" data-testid="energy-tech-section">
+      <div className="max-w-6xl mx-auto px-6 lg:px-8">
         {/* Section Header */}
         <div className="text-center mb-16">
-          <h2 
-            className="text-5xl lg:text-6xl font-bold mb-6"
-            style={{
-              background: 'linear-gradient(135deg, #FFD700 0%, #FFA500 100%)',
-              WebkitBackgroundClip: 'text',
-              WebkitTextFillColor: 'transparent',
-              backgroundClip: 'text',
-              textShadow: '0 0 30px rgba(255, 215, 0, 0.3)'
-            }}
-          >
-            Energy tech that works.
+          <h2 className="text-5xl lg:text-6xl font-bold text-scaleiq-black mb-6">
+            <span className="text-scaleiq-gold">Energy tech</span> that works.
           </h2>
           
-          <p className="text-xl text-gray-300 leading-relaxed max-w-4xl mx-auto">
+          <p className="text-xl text-gray-700 leading-relaxed max-w-4xl mx-auto">
             The next phase of energy transformation demands a different approach. To stay ahead in an increasingly complex, asset-heavy environment, companies must move beyond tools and traditional service models.
           </p>
         </div>
@@ -80,30 +48,20 @@ export const EnergyTechSection = () => {
         {/* Case Studies Carousel */}
         <div className="mt-16">
           <div className="flex items-center justify-between mb-8">
-            <h3 className="text-2xl font-bold" style={{ color: '#FFD700' }}>
-              Case Studies
+            <h3 className="text-2xl font-bold text-scaleiq-black">
+              <span className="text-scaleiq-gold">Case Studies</span>
             </h3>
             <div className="flex gap-3">
               <button
                 onClick={prevSlide}
-                className="p-3 rounded-lg border-2 transition-all"
-                style={{ 
-                  borderColor: '#FFD700',
-                  color: '#FFD700',
-                  background: 'rgba(255, 215, 0, 0.1)'
-                }}
+                className="p-3 rounded-lg border-2 border-scaleiq-gold text-scaleiq-gold hover:bg-scaleiq-gold hover:text-scaleiq-black transition-all"
                 aria-label="Previous slide"
               >
                 <ChevronLeft className="w-5 h-5" />
               </button>
               <button
                 onClick={nextSlide}
-                className="p-3 rounded-lg border-2 transition-all"
-                style={{ 
-                  borderColor: '#FFD700',
-                  color: '#FFD700',
-                  background: 'rgba(255, 215, 0, 0.1)'
-                }}
+                className="p-3 rounded-lg border-2 border-scaleiq-gold text-scaleiq-gold hover:bg-scaleiq-gold hover:text-scaleiq-black transition-all"
                 aria-label="Next slide"
               >
                 <ChevronRight className="w-5 h-5" />
@@ -119,27 +77,13 @@ export const EnergyTechSection = () => {
             >
               {caseStudies.map((study, index) => (
                 <div key={index} className="min-w-full px-2">
-                  <div 
-                    className="p-8 border-l-4 rounded-lg shadow-lg"
-                    style={{
-                      background: 'linear-gradient(135deg, rgba(26, 58, 82, 0.8) 0%, rgba(10, 25, 41, 0.8) 100%)',
-                      borderLeftColor: '#FFD700',
-                      boxShadow: '0 0 30px rgba(255, 215, 0, 0.2)'
-                    }}
-                  >
-                    <div className="inline-block px-4 py-2 text-sm font-medium rounded-full mb-4" style={{ background: 'rgba(255, 215, 0, 0.2)', color: '#FFD700' }}>
+                  <div className="p-8 bg-scaleiq-white border-l-4 border-scaleiq-gold rounded-lg shadow-lg">
+                    <div className="inline-block px-4 py-2 bg-scaleiq-gold/10 text-scaleiq-gold text-sm font-medium rounded-full mb-4">
                       Case Study
                     </div>
-                    <h4 className="text-2xl font-bold mb-4" style={{ color: '#FFD700' }}>{study.title}</h4>
-                    <p className="text-gray-300 leading-relaxed mb-6">{study.description}</p>
-                    <button 
-                      className="px-6 py-3 font-medium rounded-lg transition-all"
-                      style={{
-                        background: 'linear-gradient(135deg, #FFD700 0%, #FFA500 100%)',
-                        color: '#000',
-                        boxShadow: '0 4px 20px rgba(255, 215, 0, 0.4)'
-                      }}
-                    >
+                    <h4 className="text-2xl font-bold text-scaleiq-black mb-4">{study.title}</h4>
+                    <p className="text-gray-700 leading-relaxed mb-6">{study.description}</p>
+                    <button className="px-6 py-3 bg-scaleiq-black text-scaleiq-white hover:bg-scaleiq-gold hover:text-scaleiq-black font-medium rounded-lg transition-all">
                       Read Case Study
                     </button>
                   </div>
@@ -154,11 +98,11 @@ export const EnergyTechSection = () => {
               <button
                 key={index}
                 onClick={() => setActiveSlide(index)}
-                className="h-2 rounded-full transition-all"
-                style={{
-                  width: activeSlide === index ? '32px' : '8px',
-                  background: activeSlide === index ? '#FFD700' : 'rgba(255, 215, 0, 0.3)'
-                }}
+                className={`h-2 rounded-full transition-all ${
+                  activeSlide === index 
+                    ? 'w-8 bg-scaleiq-gold' 
+                    : 'w-2 bg-gray-300 hover:bg-scaleiq-gold/50'
+                }`}
                 aria-label={`Go to slide ${index + 1}`}
               />
             ))}
@@ -168,12 +112,7 @@ export const EnergyTechSection = () => {
           <div className="text-center mt-12">
             <button 
               onClick={() => window.location.href = '/case-studies'}
-              className="px-8 py-4 border-2 font-medium rounded-lg transition-all"
-              style={{
-                borderColor: '#FFD700',
-                color: '#FFD700',
-                background: 'rgba(255, 215, 0, 0.1)'
-              }}
+              className="px-8 py-4 border-2 border-scaleiq-gold text-scaleiq-gold hover:bg-scaleiq-gold hover:text-scaleiq-black font-medium rounded-lg transition-all"
             >
               See More Case Studies
             </button>
