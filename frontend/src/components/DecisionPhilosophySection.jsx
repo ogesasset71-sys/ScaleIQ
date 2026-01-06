@@ -1,66 +1,150 @@
-import React from 'react';
+import React from "react";
+import { motion } from "framer-motion";
+import { BrainCircuit, Cpu, Target, ShieldCheck } from "lucide-react";
 
 export const DecisionPhilosophySection = () => {
   const principles = [
-    { title: 'Domain Before Technology', icon: '1' },
-    { title: 'Pragmatic Leverage of AI', icon: '2' },
-    { title: 'Solutions Focused Approach', icon: '3' },
-    { title: 'Data Integrity', icon: '4' }
+    {
+      title: "Domain First",
+      subtitle: "Context is King",
+      icon: <BrainCircuit className="w-8 h-8" />,
+      description:
+        "Technology without domain context is noise. We start with the operational reality of the asset.",
+    },
+    {
+      title: "Pragmatic AI",
+      subtitle: "Beyond the Hype",
+      icon: <Cpu className="w-8 h-8" />,
+      description:
+        "We deploy AI where it moves the needle—automating routine drudgery or revealing hidden patterns.",
+    },
+    {
+      title: "Solution Focus",
+      subtitle: "Outcomes over Features",
+      icon: <Target className="w-8 h-8" />,
+      description:
+        "We don't just build software; we solve specific engineering and operational headaches.",
+    },
+    {
+      title: "Data Integrity",
+      subtitle: "The Foundation",
+      icon: <ShieldCheck className="w-8 h-8" />,
+      description:
+        "Bad data breaks trust. We ensure traceability and quality are baked into every pipeline.",
+    },
   ];
 
-  return (
-    <section className="py-24 bg-scaleiq-white border-t-4 border-scaleiq-gold" data-testid="decision-philosophy-section">
-      <div className="max-w-7xl mx-auto px-6 lg:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
-          {/* LEFT: Text Content */}
-          <div>
-            <div className="mb-8">
-              <div className="inline-block px-4 py-2 bg-scaleiq-gold/10 text-scaleiq-gold text-sm font-medium rounded-full mb-6 border-2 border-scaleiq-gold/30">
-                How We Think
-              </div>
-              <h2 className="text-4xl lg:text-5xl font-bold text-scaleiq-black mb-6">
-                Decision <span className="text-scaleiq-gold">Philosophy</span>
-              </h2>
-              <div className="h-1 w-24 bg-scaleiq-gold mb-6"></div>
-            </div>
-            
-            <div className="space-y-6">
-              <p className="text-lg text-gray-700 leading-relaxed">
-                In the energy sector, technology decisions are rarely isolated – they directly impact safety, uptime, and asset performance over decades.
-              </p>
-              
-              <p className="text-lg text-gray-700 leading-relaxed">
-                Making the right choices requires a combination of factors, not just technical capability.
-              </p>
-              
-              <div className="h-px bg-scaleiq-gold my-8"></div>
-              
-              <p className="text-lg text-gray-700 leading-relaxed">
-                ScaleIQ's approach combines deep domain understanding with pragmatic technology execution, ensuring solutions are shaped by operational realities and deliver measurable impact.
-              </p>
-            </div>
-          </div>
+  const container = {
+    hidden: { opacity: 0 },
+    show: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.15,
+        delayChildren: 0.2,
+      },
+    },
+  };
 
-          {/* RIGHT: Four Principle Tiles */}
-          <div className="grid grid-cols-2 gap-6">
+  const item = {
+    hidden: { opacity: 0, scale: 0.9 },
+    show: {
+      opacity: 1,
+      scale: 1,
+      transition: { type: "spring", stiffness: 50 },
+    },
+  };
+
+  return (
+    <section
+      className="py-32 bg-transparent relative"
+      data-testid="decision-philosophy-section"
+    >
+      {/* Background Elements */}
+      <div className="absolute top-1/2 left-0 w-1/2 h-1/2 bg-scaleiq-gold/5 blur-[120px] pointer-events-none" />
+
+      <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
+          {/* LEFT: Manifesto */}
+          <motion.div
+            initial={{ opacity: 0, x: -50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+          >
+            <div className="inline-flex items-center gap-2 px-3 py-1 border border-scaleiq-gold/50 rounded-full text-scaleiq-gold text-xs font-bold uppercase tracking-widest mb-8">
+              <span className="w-1.5 h-1.5 rounded-full bg-scaleiq-gold animate-pulse" />
+              Our DNA
+            </div>
+
+            <h2 className="text-5xl lg:text-7xl font-bold text-white mb-8 leading-none">
+              The{" "}
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-scaleiq-gold to-yellow-200">
+                ScaleIQ
+              </span>{" "}
+              Approach.
+            </h2>
+
+            <div className="space-y-8">
+              <p className="text-xl text-gray-300 leading-relaxed max-w-lg">
+                In the high-stakes world of energy, "digital transformation" is
+                often code for expensive shelfware.
+              </p>
+
+              <div className="pl-6 border-l-2 border-scaleiq-gold/30">
+                <p className="text-lg text-gray-400 italic">
+                  "We believe that successful technology adoption requires a
+                  bridge between the messy reality of the field and the promise
+                  of the cloud."
+                </p>
+              </div>
+
+              <div className="flex gap-4 pt-4">
+                <div className="h-px flex-1 bg-gradient-to-r from-scaleiq-gold/50 to-transparent my-auto" />
+                <span className="text-sm text-scaleiq-gold uppercase tracking-wider font-semibold">
+                  Core Principles
+                </span>
+              </div>
+            </div>
+          </motion.div>
+
+          {/* RIGHT: Strategist Grid */}
+          <motion.div
+            variants={container}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true }}
+            className="grid grid-cols-1 md:grid-cols-2 gap-6"
+          >
             {principles.map((principle, index) => (
-              <div 
+              <motion.div
                 key={index}
-                className="relative p-8 bg-scaleiq-black border-4 border-scaleiq-gold/30 rounded-xl hover:border-scaleiq-gold hover:shadow-xl hover:shadow-scaleiq-gold/20 transition-all group cursor-default"
+                variants={item}
+                whileHover={{ y: -5 }}
+                className="group relative p-8 bg-black/40 backdrop-blur-md border border-white/10 rounded-2xl hover:border-scaleiq-gold/50 transition-all duration-300 overflow-hidden"
                 data-testid={`principle-tile-${index}`}
               >
-                <div className="absolute top-4 right-4 w-12 h-12 bg-scaleiq-gold rounded-full flex items-center justify-center shadow-lg">
-                  <span className="text-xl font-bold text-scaleiq-black">{principle.icon}</span>
+                {/* Hover Glow */}
+                <div className="absolute inset-0 bg-gradient-to-br from-scaleiq-gold/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+
+                <div className="relative z-10">
+                  <div className="w-12 h-12 rounded-lg bg-white/5 flex items-center justify-center text-scaleiq-gold mb-6 group-hover:scale-110 group-hover:bg-scaleiq-gold group-hover:text-black transition-all duration-300">
+                    {principle.icon}
+                  </div>
+
+                  <h3 className="text-xl font-bold text-white mb-1 group-hover:text-scaleiq-gold transition-colors">
+                    {principle.title}
+                  </h3>
+                  <div className="text-xs text-gray-500 uppercase tracking-wider mb-4 font-mono">
+                    {principle.subtitle}
+                  </div>
+
+                  <p className="text-sm text-gray-400 leading-relaxed group-hover:text-gray-300 transition-colors">
+                    {principle.description}
+                  </p>
                 </div>
-                
-                <h3 className="text-lg font-bold text-scaleiq-white pt-6 leading-tight">
-                  {principle.title}
-                </h3>
-                
-                <div className="absolute bottom-0 left-0 w-full h-1 bg-scaleiq-gold scale-x-0 group-hover:scale-x-100 transition-transform origin-left"></div>
-              </div>
+              </motion.div>
             ))}
-          </div>
+          </motion.div>
         </div>
       </div>
     </section>
