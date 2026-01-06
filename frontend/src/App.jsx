@@ -6,10 +6,10 @@ import { Toaster } from './components/ui/sonner';
 // New Components
 import { NewHeader } from './components/NewHeader';
 import { NewHeroSection } from './components/NewHeroSection';
-import { StatsSection } from './components/StatsSection';
+import { WhatWeDoTabbedSection } from './components/WhatWeDoTabbedSection';
+import { NumericImpactSection } from './components/NumericImpactSection';
 import { CorePrinciplesSection } from './components/CorePrinciplesSection';
 import { LeadershipQuoteSection } from './components/LeadershipQuoteSection';
-import { WhatWeDoSection } from './components/WhatWeDoSection';
 import { CaseStudyHighlight } from './components/CaseStudyHighlight';
 import { CTASection } from './components/CTASection';
 import { NewFooter } from './components/NewFooter';
