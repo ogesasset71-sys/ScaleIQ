@@ -17,45 +17,26 @@ export const NewHeader = () => {
         { name: 'Partners & Growth', path: '/about/partners' },
       ]
     },
+    { name: 'How We Work', path: '/how-we-work' },
     {
-      name: 'Whom We Serve',
+      name: 'What We Do',
+      items: [
+        { name: 'Digital Engineering', path: '/digital/app-dev' },
+        { name: 'Products', path: '/products/ogesone' },
+        { name: 'GCC Solutions', path: '/gcc-solutions' },
+      ]
+    },
+    {
+      name: 'Who We Serve',
       items: [
         { name: 'Oil & Gas Companies', path: '/serve/oil-gas' },
         { name: 'Energy Companies', path: '/serve/energy' },
         { name: 'Renewables & Utilities', path: '/serve/renewables' },
         { name: 'Energy ISVs', path: '/serve/isvs' },
-        { name: 'Oil Service Companies', path: '/serve/oil-service' },
+        { name: 'Oilfield Service Companies', path: '/serve/oil-service' },
       ]
     },
-    {
-      name: 'Digital Engineering',
-      items: [
-        { name: 'Application Development & Management', path: '/digital/app-dev' },
-        { name: 'AI Enablement', path: '/digital/ai' },
-        { name: 'Product Engineering', path: '/digital/product' },
-        { name: 'Professional Services', path: '/digital/professional' },
-        { name: 'Technical Consulting', path: '/digital/consulting' },
-        { name: 'Staff Augmentation', path: '/digital/staff' },
-      ]
-    },
-    {
-      name: 'Products',
-      items: [
-        { name: 'OgesOne', path: '/products/ogesone' },
-        { name: 'Product 2', path: '/products/product2' },
-        { name: 'Product 3', path: '/products/product3' },
-      ]
-    },
-    { name: 'GCC Solutions', path: '/gcc-solutions' },
-    {
-      name: 'News & Insights',
-      items: [
-        { name: 'News', path: '/news' },
-        { name: 'ScaleIQ Insight', path: '/insights' },
-        { name: 'Case Studies', path: '/case-studies' },
-        { name: 'Events', path: '/events' },
-      ]
-    },
+    { name: 'News', path: '/news' },
     { name: 'Join Us', path: '/join' },
     { name: 'Contact', path: '/contact' },
   ];
