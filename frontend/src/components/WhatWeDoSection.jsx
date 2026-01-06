@@ -87,6 +87,7 @@ export const WhatWeDoSection = () => {
 
   return (
     <section
+      id="what-we-do"
       className="py-24 bg-transparent overflow-hidden"
       data-testid="what-we-do-section"
     >

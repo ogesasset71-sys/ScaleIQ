@@ -56,6 +56,7 @@ export const DecisionPhilosophySection = () => {
 
   return (
     <section
+      id="how-we-work"
       className="py-32 bg-transparent relative"
       data-testid="decision-philosophy-section"
     >

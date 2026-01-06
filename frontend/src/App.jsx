@@ -24,6 +24,10 @@ import { AboutPartners } from "./components/AboutPartners";
 
 // Whom We Serve
 import { ServeOilGas } from "./components/ServeOilGas";
+import { ServeEnergy } from "./components/ServeEnergy";
+import { ServeRenewables } from "./components/ServeRenewables";
+import { ServeISVs } from "./components/ServeISVs";
+import { ServeOilService } from "./components/ServeOilService";
 
 // Digital Engineering
 import { DigitalAppDev } from "./components/DigitalAppDev";
@@ -91,6 +95,7 @@ const PlaceholderPage = ({ title, subtitle }) => (
     </div>
     <CTASection />
     <NewFooter />
+    {/* hey i m herre  */}
     <GoToTop />
   </div>
 );
@@ -112,42 +117,10 @@ function App() {
 
           {/* Whom We Serve */}
           <Route path="/serve/oil-gas" element={<ServeOilGas />} />
-          <Route
-            path="/serve/energy"
-            element={
-              <PlaceholderPage
-                title="Energy Companies"
-                subtitle="Whom We Serve > Energy Companies"
-              />
-            }
-          />
-          <Route
-            path="/serve/renewables"
-            element={
-              <PlaceholderPage
-                title="Renewables & Utilities"
-                subtitle="Whom We Serve > Renewables & Utilities"
-              />
-            }
-          />
-          <Route
-            path="/serve/isvs"
-            element={
-              <PlaceholderPage
-                title="Energy ISVs"
-                subtitle="Whom We Serve > Energy ISVs"
-              />
-            }
-          />
-          <Route
-            path="/serve/oil-service"
-            element={
-              <PlaceholderPage
-                title="Oil Service Companies"
-                subtitle="Whom We Serve > Oil Service Companies"
-              />
-            }
-          />
+          <Route path="/serve/energy" element={<ServeEnergy />} />
+          <Route path="/serve/renewables" element={<ServeRenewables />} />
+          <Route path="/serve/isvs" element={<ServeISVs />} />
+          <Route path="/serve/oil-service" element={<ServeOilService />} />
 
           {/* Digital Engineering */}
           <Route path="/digital/app-dev" element={<DigitalAppDev />} />
