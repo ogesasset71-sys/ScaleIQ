@@ -2,7 +2,7 @@ import React from "react";
 import "./App.css";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { Toaster } from "./components/ui/sonner";
-
+import GCC from "../../frontend/src/components/ui/GCC/GCCSetup";
 // New Components
 import { NewHeader } from "./components/NewHeader";
 import { NewHeroSection } from "./components/NewHeroSection";
@@ -176,7 +176,7 @@ function App() {
           <Route path="/products/product3" element={<ProductsPage />} />
 
           {/* GCC Solutions */}
-          <Route path="/gcc-solutions" element={<GCCSolutions />} />
+          <Route path="/gcc-solutions" element={<GCC />} />
 
           {/* News & Insights */}
           <Route path="/news" element={<NewsPage />} />

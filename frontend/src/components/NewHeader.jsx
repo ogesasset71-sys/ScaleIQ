@@ -119,7 +119,7 @@ export const NewHeader = () => {
           </div>
 
           {/* Mobile Menu Button */}
-          <div className="lg:hidden z-[70]">
+          <div className="lg:hidden z-[110]">
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               className="text-white p-2"
@@ -138,15 +138,16 @@ export const NewHeader = () => {
       <AnimatePresence>
         {mobileMenuOpen && (
           <motion.div
-            initial={{ opacity: 0, scale: 1.1 }}
-            animate={{ opacity: 1, scale: 1 }}
-            exit={{ opacity: 0, scale: 1.1 }}
-            transition={{ duration: 0.2 }}
-            className="fixed inset-0 bg-black z-[60] flex flex-col pt-24 px-8 overflow-y-auto"
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            transition={{ duration: 0.3, ease: "easeInOut" }}
+            className="fixed inset-0 bg-black z-[100] flex flex-col pt-24 px-8 overflow-y-auto min-h-screen"
+            style={{ top: 0, left: 0, right: 0, bottom: 0 }}
           >
             <div className="flex flex-col space-y-6 pb-20">
               {navigation.map((item) => (
-                <div key={item.name} className="border-b border-white/10 pb-4">
+                <div key={item.name} className="border-b border-white/5 pb-4">
                   {item.items ? (
                     <div>
                       <button
@@ -168,24 +169,26 @@ export const NewHeader = () => {
                           }`}
                         />
                       </button>
-
-                      {mobileExpanded[item.name] && (
-                        <motion.div
-                          initial={{ opacity: 0, y: -10 }}
-                          animate={{ opacity: 1, y: 0 }}
-                          className="pl-4 mt-4 flex flex-col space-y-4 border-l border-scaleiq-gold/30"
-                        >
-                          {item.items.map((subItem) => (
-                            <button
-                              key={subItem.name}
-                              onClick={() => handleNavClick(subItem)}
-                              className="text-left text-lg text-gray-400 hover:text-white transition-colors py-1"
-                            >
-                              {subItem.name}
-                            </button>
-                          ))}
-                        </motion.div>
-                      )}
+                      <AnimatePresence>
+                        {mobileExpanded[item.name] && (
+                          <motion.div
+                            initial={{ height: 0, opacity: 0 }}
+                            animate={{ height: "auto", opacity: 1 }}
+                            exit={{ height: 0, opacity: 0 }}
+                            className="pl-4 overflow-hidden mt-4 flex flex-col space-y-4 border-l border-scaleiq-gold/30"
+                          >
+                            {item.items.map((subItem) => (
+                              <button
+                                key={subItem.name}
+                                onClick={() => handleNavClick(subItem)}
+                                className="text-left text-lg text-gray-400 hover:text-white transition-colors py-1"
+                              >
+                                {subItem.name}
+                              </button>
+                            ))}
+                          </motion.div>
+                        )}
+                      </AnimatePresence>
                     </div>
                   ) : (
                     <button
