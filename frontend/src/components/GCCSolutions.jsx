@@ -125,6 +125,7 @@ export const GCCSolutions = () => {
         visible: true,
         savings: 61,
         priority: "high",
+        color: "#EF4444", // Red
       },
       {
         name: "Saudi Arabia",
@@ -133,6 +134,7 @@ export const GCCSolutions = () => {
         visible: true,
         savings: 59,
         priority: "high",
+        color: "#F97316", // Orange
       },
       {
         name: "UAE (Dubai)",
@@ -141,6 +143,7 @@ export const GCCSolutions = () => {
         visible: true,
         savings: 54,
         priority: "high",
+        color: "#EAB308", // Yellow
       },
       {
         name: "Norway",
@@ -149,6 +152,7 @@ export const GCCSolutions = () => {
         visible: true,
         savings: 51,
         priority: "medium",
+        color: "#22C55E", // Green
       },
       {
         name: "Canada",
@@ -157,6 +161,7 @@ export const GCCSolutions = () => {
         visible: true,
         savings: 49,
         priority: "medium",
+        color: "#3B82F6", // Blue
       },
       {
         name: "Australia",
@@ -165,38 +170,7 @@ export const GCCSolutions = () => {
         visible: true,
         savings: 49,
         priority: "medium",
-      },
-      {
-        name: "Germany",
-        angle: Math.PI * 0.1,
-        distance: 420,
-        visible: false,
-        savings: 45,
-        priority: "medium",
-      },
-      {
-        name: "UK (London)",
-        angle: Math.PI * 0.05,
-        distance: 415,
-        visible: false,
-        savings: 52,
-        priority: "medium",
-      },
-      {
-        name: "Kuwait",
-        angle: Math.PI * 1.75,
-        distance: 425,
-        visible: false,
-        savings: 53,
-        priority: "medium",
-      },
-      {
-        name: "Qatar",
-        angle: Math.PI * 1.72,
-        distance: 422,
-        visible: false,
-        savings: 52,
-        priority: "medium",
+        color: "#A855F7", // Purple
       },
     ];
 
@@ -252,30 +226,28 @@ export const GCCSolutions = () => {
         const isVisible = currentTime > appearTime;
 
         if (isVisible || city.visible) {
-          const connectionAlpha = Math.min(
-            1,
-            Math.max(0, currentTime - appearTime) / 2
-          );
           ctx.globalAlpha = connectionAlpha;
           ctx.beginPath();
           ctx.moveTo(indiaX, indiaY);
           ctx.lineTo(cityX, cityY);
-          ctx.lineWidth = 1;
-          ctx.strokeStyle = "rgba(220, 191, 98, 0.4)";
+          // Line thickness based on savings percentage
+          const lineWidth = Math.max(1, city.savings / 20);
+          ctx.lineWidth = lineWidth;
+          ctx.strokeStyle = city.color || "rgba(220, 191, 98, 0.4)";
           ctx.stroke();
           ctx.globalAlpha = 1;
 
-          const markerRadius = 3;
+          const markerRadius = city.priority === "high" ? 5 : 3;
           ctx.beginPath();
           ctx.arc(cityX, cityY, markerRadius, 0, Math.PI * 2);
-          ctx.fillStyle = "#DCBF62";
+          ctx.fillStyle = city.color || "#DCBF62";
           ctx.fill();
 
           if (city.priority === "high" && connectionAlpha > 0.7) {
-            ctx.fillStyle = "#DCBF62";
-            ctx.font = "10px Inter";
+            ctx.fillStyle = "white";
+            ctx.font = "bold 12px Inter";
             ctx.textAlign = "center";
-            ctx.fillText(`${city.savings}%`, cityX, cityY - 8);
+            ctx.fillText(`${city.savings}%`, cityX, cityY - markerRadius - 10);
           }
         }
       });
@@ -460,17 +432,85 @@ export const GCCSolutions = () => {
         <section className="max-w-7xl mx-auto px-6 lg:px-8 mb-32">
           <div className="grid lg:grid-cols-2 gap-20 items-center">
             <motion.div {...fadeIn} className="space-y-8">
-              <div className="flex flex-col  items-center justify-between gap-8">
+              <div className="flex flex-col items-start gap-8">
                 <h2 className="text-4xl font-bold tracking-tight">
                   A Unified Extension of Your{" "}
                   <span className="text-scaleiq-gold">Global Map</span>
                 </h2>
-                <br />
-                <p className="text-lg text-gray-400 leading-relaxed">
+                <p className="text-lg text-gray-400 leading-relaxed max-w-xl">
                   Connect your global hubs seamlessly with India-based
                   capability centers that function as native components of your
                   organization.
                 </p>
+
+                {/* Regional Savings List */}
+                <div className="w-full max-w-md space-y-4">
+                  {[
+                    {
+                      region: "United States",
+                      savings: "61%",
+                      color: "bg-red-500",
+                    },
+                    {
+                      region: "Saudi Arabia",
+                      savings: "59%",
+                      color: "bg-orange-500",
+                    },
+                    {
+                      region: "UAE (Dubai)",
+                      savings: "54%",
+                      color: "bg-yellow-500",
+                    },
+                    { region: "Norway", savings: "51%", color: "bg-green-500" },
+                    { region: "Canada", savings: "49%", color: "bg-blue-500" },
+                    {
+                      region: "Australia",
+                      savings: "49%",
+                      color: "bg-purple-500",
+                    },
+                  ].map((item, index) => (
+                    <motion.div
+                      key={index}
+                      initial={{ opacity: 0, x: -20 }}
+                      whileInView={{ opacity: 1, x: 0 }}
+                      transition={{ delay: index * 0.1 }}
+                      className="flex items-center justify-between p-4 bg-white/5 border border-white/10 rounded-2xl group hover:border-white/20 transition-all cursor-default"
+                    >
+                      <div className="flex items-center gap-4">
+                        <div
+                          className={`w-3 h-3 ${item.color} rounded-full shadow-[0_0_10px_rgba(255,255,255,0.2)]`}
+                        />
+                        <span className="text-lg font-medium text-white/90">
+                          {item.region}
+                        </span>
+                      </div>
+                      <span className="text-xl font-bold text-scaleiq-gold">
+                        {item.savings}
+                      </span>
+                    </motion.div>
+                  ))}
+                </div>
+
+                {/* Visualization Guide */}
+                <div className="p-6 bg-white/5 border border-white/10 rounded-2xl w-full max-w-md">
+                  <h4 className="text-sm font-bold text-scaleiq-gold mb-4 uppercase tracking-widest">
+                    Visualization Guide
+                  </h4>
+                  <div className="space-y-3">
+                    <div className="flex items-center gap-3 text-sm text-gray-400">
+                      <div className="w-4 h-[2px] bg-white/40" />
+                      <span>Line thickness = Cost savings %</span>
+                    </div>
+                    <div className="flex items-center gap-3 text-sm text-gray-400">
+                      <div className="w-3 h-3 bg-red-500 rounded-full" />
+                      <span>Dot size = Strategic Priority</span>
+                    </div>
+                    <div className="flex items-center gap-3 text-sm text-gray-400">
+                      <Globe className="w-4 h-4 text-white/40" />
+                      <span>Connected to India GCC operations</span>
+                    </div>
+                  </div>
+                </div>
               </div>
             </motion.div>
 
