@@ -226,6 +226,10 @@ export const GCCSolutions = () => {
         const isVisible = currentTime > appearTime;
 
         if (isVisible || city.visible) {
+          const connectionAlpha = Math.min(
+            1,
+            Math.max(0, currentTime - appearTime) / 2
+          );
           ctx.globalAlpha = connectionAlpha;
           ctx.beginPath();
           ctx.moveTo(indiaX, indiaY);
