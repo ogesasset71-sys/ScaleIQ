@@ -35,6 +35,70 @@ const staggerContainer = {
   },
 };
 
+const SavingsPieChart = () => {
+  const data = [
+    { region: "US", save: 61, color: "#DCBF62" },
+    { region: "SA", save: 59, color: "#DCBF62" },
+    { region: "AE", save: 54, color: "#DCBF62" },
+    { region: "NO", save: 51, color: "#DCBF62" },
+  ];
+
+  return (
+    <div className="relative w-72 h-72 flex items-center justify-center group flex-shrink-0">
+      <div className="absolute inset-0 border border-scaleiq-gold/10 rounded-full animate-[spin_20s_linear_infinite]" />
+      <div className="absolute inset-4 border border-scaleiq-gold/5 rounded-full animate-[spin_15s_linear_infinite_reverse]" />
+
+      <svg viewBox="0 0 100 100" className="w-full h-full transform -rotate-90">
+        {data.map((item, i) => {
+          const angle = 90;
+          const startAngle = i * angle;
+          const radius = (item.save / 100) * 48;
+
+          const x1 = 50 + radius * Math.cos((startAngle * Math.PI) / 180);
+          const y1 = 50 + radius * Math.sin((startAngle * Math.PI) / 180);
+          const x2 =
+            50 + radius * Math.cos(((startAngle + angle) * Math.PI) / 180);
+          const y2 =
+            50 + radius * Math.sin(((startAngle + angle) * Math.PI) / 180);
+
+          const pathData = `M 50 50 L ${x1} ${y1} A ${radius} ${radius} 0 0 1 ${x2} ${y2} Z`;
+
+          return (
+            <motion.path
+              key={i}
+              d={pathData}
+              fill={item.color}
+              initial={{ opacity: 0, scale: 0 }}
+              whileInView={{ opacity: 0.2 + i * 0.1, scale: 1 }}
+              whileHover={{ opacity: 0.9, scale: 1.05 }}
+              transition={{ delay: i * 0.2, duration: 1, type: "spring" }}
+              className="cursor-pointer transition-all duration-300"
+            />
+          );
+        })}
+        <line
+          x1="50"
+          y1="0"
+          x2="50"
+          y2="100"
+          stroke="white"
+          strokeWidth="0.1"
+          opacity="0.2"
+        />
+        <line
+          x1="0"
+          y1="50"
+          x2="100"
+          y2="50"
+          stroke="white"
+          strokeWidth="0.1"
+          opacity="0.2"
+        />
+      </svg>
+    </div>
+  );
+};
+
 export const GCCSolutions = () => {
   const [activeModel, setActiveModel] = useState("leasing");
   const gccGlobeRef = useRef(null);
@@ -396,43 +460,17 @@ export const GCCSolutions = () => {
         <section className="max-w-7xl mx-auto px-6 lg:px-8 mb-32">
           <div className="grid lg:grid-cols-2 gap-20 items-center">
             <motion.div {...fadeIn} className="space-y-8">
-              <h2 className="text-4xl font-bold tracking-tight">
-                A Unified Extension of Your{" "}
-                <span className="text-scaleiq-gold">Global Map</span>
-              </h2>
-              <p className="text-lg text-gray-400 leading-relaxed">
-                Connect your global hubs seamlessly with India-based capability
-                centers that function as native components of your organization.
-              </p>
-
-              <div className="space-y-4">
-                {[
-                  { region: "United States", save: "61%", color: "bg-red-500" },
-                  {
-                    region: "Saudi Arabia",
-                    save: "59%",
-                    color: "bg-orange-500",
-                  },
-                  {
-                    region: "UAE (Dubai)",
-                    save: "54%",
-                    color: "bg-yellow-500",
-                  },
-                  { region: "Norway", save: "51%", color: "bg-emerald-500" },
-                ].map((hub, i) => (
-                  <div
-                    key={i}
-                    className="flex items-center justify-between p-4 bg-white/5 border border-white/10 rounded-xl"
-                  >
-                    <div className="flex items-center gap-3">
-                      <div className={`w-2 h-2 rounded-full ${hub.color}`} />
-                      <span className="font-medium">{hub.region}</span>
-                    </div>
-                    <span className="text-scaleiq-gold font-bold">
-                      {hub.save} Savings
-                    </span>
-                  </div>
-                ))}
+              <div className="flex flex-col  items-center justify-between gap-8">
+                <h2 className="text-4xl font-bold tracking-tight">
+                  A Unified Extension of Your{" "}
+                  <span className="text-scaleiq-gold">Global Map</span>
+                </h2>
+                <br />
+                <p className="text-lg text-gray-400 leading-relaxed">
+                  Connect your global hubs seamlessly with India-based
+                  capability centers that function as native components of your
+                  organization.
+                </p>
               </div>
             </motion.div>
 
